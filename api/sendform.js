@@ -22,17 +22,16 @@ export default async function handler(req, res) {
     // Get Telegram credentials from Vercel
     const token = process.env.TELEGRAM_BOT_TOKEN;
 
-    const chatIds = [
-      process.env.TELEGRAM_CHAT_ID_1,
-      process.env.TELEGRAM_CHAT_ID_2
-    ];
+  const chatIds = [
+  process.env.TELEGRAM_CHAT_ID_1
+];
 
-    if (!token || chatIds.some(id => !id)) {
-      return res.status(500).json({
-        success: false,
-        message: "Server configuration error."
-      });
-    }
+   if (!token || chatIds.some(id => !id)) {
+  return res.status(500).json({
+    success: false,
+    message: "Server configuration error."
+  });
+}
 
     // Prepare notification
     const text = `
