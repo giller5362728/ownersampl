@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { name, email, phone, message } = req.body || {};
+    const { firstname, email, phone, message } = req.body || {};
 
     if (!name || !email || !phone || !message) {
       return res.status(400).json({
@@ -20,7 +20,7 @@ export default async function handler(req, res) {
     const token = process.env.TELEGRAM_BOT_TOKEN;
 
     const chatIds = [
-      process.env.8868916621,
+      process.env.TELEGRAM_CHAT_ID_1,
       process.env.TELEGRAM_CHAT_ID_2
     ];
 
@@ -37,6 +37,7 @@ NEW WEBSITE FORM SUBMISSION
 Name: ${name}
 Email: ${email}
 Phone: ${phone}
+firstname: ${firstname}
 
 Message:
 ${message}
