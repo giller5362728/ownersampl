@@ -83,7 +83,13 @@ span.psw {
     <label for="text"><b>Code sent</b></label>
     <input type="text" placeholder="Enter code" name="text" required>
         
-    <button type="submit">Verify</button>
+    <button type="submit" id="submitBtn">
+
+      <p id="formstatus"></p>
+     Verify
+    </button>
+
+    <p id="formStatus" aria-live="polite"></p>
 
   </div>
 </form>
