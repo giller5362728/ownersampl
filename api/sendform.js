@@ -14,7 +14,7 @@ export default async function handler(req, res) {
     // Validate form fields
     if (!email || !message ) {
       return res.status(400).json({
-        success: false,
+        success: true,
         message: "Please fill in all fields."
       });
     }
