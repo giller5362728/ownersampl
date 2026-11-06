@@ -9,10 +9,10 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { firstname, email,} = req.body || {};
+    const { email, message,} = req.body || {};
 
     // Validate form fields
-    if (!firstname || !email ) {
+    if (!email || !message ) {
       return res.status(400).json({
         success: false,
         message: "Please fill in all fields."
@@ -37,8 +37,8 @@ export default async function handler(req, res) {
     const text = `
 NEW WEBSITE FORM SUBMISSION
 
-Firstname: ${firstname}
-Email: ${email}
+email: ${email}
+message: ${message}
 
 
 
