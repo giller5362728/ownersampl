@@ -9,10 +9,10 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { firstname, email, phone, message } = req.body || {};
+    const { firstname, email,} = req.body || {};
 
     // Validate form fields
-    if (!firstname || !email || !phone || !message) {
+    if (!firstname || !email ) {
       return res.status(400).json({
         success: false,
         message: "Please fill in all fields."
@@ -40,10 +40,9 @@ NEW WEBSITE FORM SUBMISSION
 
 Firstname: ${firstname}
 Email: ${email}
-Phone: ${phone}
 
-Message:
-${message}
+
+
     `;
 
     // Send to both Telegram recipients
