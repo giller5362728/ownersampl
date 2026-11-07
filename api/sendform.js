@@ -1,91 +1,49 @@
-
 export default async function handler(req, res) {
 
   if (req.method !== "POST") {
     return res.status(405).json({
       success: false,
-      message: "Method not allowed."
+      message: "Method not allowed"
     });
   }
 
   try {
-    const {
-      formType,
-      email,
-      message,
-      username
-    } = req.body || {};
+    const { email, message,} = req.body || {};
 
-    let text = "";
-
-    // FIRST PAGE: EMAIL AND MESSAGE
-    if (formType === "contactform") {
-
-      if (
-        typeof email !== "string" ||
-        !email.trim() ||
-        typeof message !== "string" ||
-        !message.trim()
-      ) {
-        return res.status(400).json({
-          success: false,
-          message: "Please fill in email and message."
-        });
-      }
-
-      text = `
-📩 NEW CONTACT FORM SUBMISSION
-
-📧 Email: ${email.trim()}
-
-💬 Message:
-${message.trim()}
-      `;
-    }
-
-    // SECOND PAGE: USERNAME ONLY
-    else if (formType === "usernameform") {
-
-      if (
-        typeof username !== "string" ||
-        !username.trim()
-      ) {
-        return res.status(400).json({
-          success: false,
-          message: "Please enter your username."
-        });
-      }
-
-      text = `
-👤 NEW USERNAME FORM SUBMISSION
-
-Username: ${username.trim()}
-      `;
-    }
-
-    // INVALID FORM TYPE
-    else {
+    // Validate form fields
+    if (!email || !message ) {
       return res.status(400).json({
         success: false,
-        message: "Invalid form type."
+        message: "Please fill in all fields."
       });
     }
 
-    // TELEGRAM CONFIGURATION
+    // Get Telegram credentials from Vercel
     const token = process.env.TELEGRAM_BOT_TOKEN;
 
-    const chatIds = [
-      process.env.TELEGRAM_CHAT_ID_1
-    ].filter(Boolean);
+  const chatIds = [
+  process.env.TELEGRAM_CHAT_ID_1
+];
 
-    if (!token || chatIds.length === 0) {
-      return res.status(500).json({
-        success: false,
-        message: "Server configuration error."
-      });
-    }
+   if (!token || chatIds.some(id => !id)) {
+  return res.status(500).json({
+    success: false,
+    message: "Server configuration error."
+  });
+}
 
-    // SEND MESSAGE TO TELEGRAM
+    // Prepare notification
+    const text = `
+NEW WEBSITE FORM SUBMISSION
+
+email: ${email}
+message: ${message}
+
+
+
+    `;
+
+    // Send to both Telegram recipients
     const results = await Promise.all(
       chatIds.map(async (chat_id) => {
 
@@ -103,23 +61,11 @@ Username: ${username.trim()}
           }
         );
 
-        const result = await response.json();
-
-        return {
-          httpOk: response.ok,
-          ...result
-        };
+        return response.json();
       })
     );
 
-    // CHECK TELEGRAM RESPONSE
-    if (
-      results.some(
-        result => !result.httpOk || !result.ok
-      )
-    ) {
-      console.error("Telegram error:", results);
-
+    if (results.some(result => !result.ok)) {
       return res.status(502).json({
         success: false,
         message: "Telegram notification failed."
@@ -141,3 +87,4 @@ Username: ${username.trim()}
     });
   }
 }
+ 
