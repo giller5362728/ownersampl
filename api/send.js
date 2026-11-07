@@ -8,10 +8,10 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { message} = req.body || {};
+    const { fname } = req.body || {};
 
     // Validate form fields
-    if ( !message ) {
+    if ( !fname ) {
       return res.status(400).json({
         success: false,
         message: "Please fill in all fields."
@@ -37,7 +37,7 @@ export default async function handler(req, res) {
 NEW WEBSITE FORM SUBMISSION
 
 
-message: ${message}
+fname: ${fname}
 
 
 
