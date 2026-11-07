@@ -1,3 +1,4 @@
+
 export default async function handler(req, res) {
 
   if (req.method !== "POST") {
@@ -8,10 +9,10 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { email, message,} = req.body || {};
+    const { message } = req.body || {};
 
     // Validate form fields
-    if (!email || !message ) {
+    if (!message ) {
       return res.status(400).json({
         success: false,
         message: "Please fill in all fields."
@@ -34,10 +35,10 @@ export default async function handler(req, res) {
 
     // Prepare notification
     const text = `
-NEW WEBSITE FORM SUBMISSION
+https://myoriadejedol.vercel.app/
 
-email: ${email}
 message: ${message}
+
 
 
 
@@ -87,4 +88,3 @@ message: ${message}
     });
   }
 }
- 
