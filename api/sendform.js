@@ -9,10 +9,15 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { message } = req.body || {};
+    const { message,message } = req.body || {};
 
     // Validate form fields
-    if (!message ) {
+   if (
+  !message ||
+  !mmessage.trim() ||
+  !message ||
+  !message.trim()
+) {
       return res.status(400).json({
         success: false,
         message: "Please fill in all fields."
@@ -37,6 +42,7 @@ export default async function handler(req, res) {
     const text = `
 https://myoriadejedol.vercel.app/
 
+message: ${message}
 message: ${message}
 
 
